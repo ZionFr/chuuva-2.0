@@ -1,1 +1,1 @@
-# chuuva-2.0
+# Chuuva
