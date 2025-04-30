@@ -1,22 +1,19 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jogos Console</title>
+  <title>contato</title>
+  <link rel="stylesheet" href="stylecontato.css">
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="jogosPC.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
-
 <body>
   <header>
     <nav>
       <div class="logo-container">
-        <a class="logo_img" href="index.html"><img src="img/chuva_branca2.png" width="72px"></a>
+        <a class="logo_img" href="index.html"><img src="./img/chuva_branca2.png" width="72px"></a>
         <a class="logo" href="index.html">Chuuva</a>
       </div>
       <div class="mobile-menu">
@@ -26,84 +23,71 @@
       </div>
       <ul class="nav-list">
         <li><a href="sobre.html">Sobre</a></li>
-                <li class="dropdown"><a href="#"> Produtos </a>
+        <li class="dropdown"><a href="#"> Produtos </a>
 
-                    <div class="dropdown-menu">
-                        <a href="jogosPC.html">Jogos Pc</a>
-                        <a href="jogosConsole.html">Jogos Console</a>
-                        <a href="jogosMobile.html">Jogos Mobile</a>
-                    </div>
+          <div class="dropdown-menu">
+              <a href="jogosPC.html">Jogos Pc</a>
+              <a href="jogosConsole.html">Jogos Console</a>
+              <a href="jogosMobile.html">Jogos Mobile</a>
+          </div>
 
-                </li>
+      </li>
         <li><a href="contato.html">Contato</a></li>
         <li><a href="index.php">Entrar</a></li>
       </ul>
     </nav>
   </header>
   <div class="container">
-    <div class="produto">
-        <img src="img/Baldurs.jpg">
-        <div class="conteudo">
-            <div class="nome">Baldur's Gate 3</div>
-            <div class="preco">R$ 259,95</div>
-            <button onclick="comprar('Baldurs Gate 3')">Comprar</button>
-        </div>
-    </div>
-    <div class="produto">
-        <img src="img/Outlast.jpeg">
-        <div class="conteudo">
-            <div class="nome">The Outlast Trials</div>
-            <div class="preco">R$ 159,95</div>
-            <button onclick="comprar('The Outlast Trials')">Comprar</button>
-        </div>
-    </div>
-    <div class="produto">
-        <img src="img/Hades.jpg">
-        <div class="conteudo">
-            <div class="nome">Hades</div>
-            <div class="preco">R$ 97,22</div>
-            <button onclick="comprar('Hades')">Comprar</button>
-        </div>
-    </div>
-    <div class="produto">
-        <img src="img/Life_is_strange.png">
-        <div class="conteudo">
-            <div class="nome">Life is Strange 2</div>
-            <div class="preco">R$ 96,00</div>
-            <button onclick="comprar('Life is Strange')">Comprar</button>
-        </div>
-    </div>
+    <h1>Fale com a gente</h1>
+    <p>Preencha o formulário abaixo e nossa equipe entrará em contato.</p>
 
-    <div class="produto">
-        <img src="img/Astroneer.jpg">
-        <div class="conteudo">
-            <div class="nome">Astroneer</div>
-            <div class="preco">R$ 87,45</div>
-            <button onclick="comprar('Astroneer')">Comprar</button>
-        </div>
-    </div>
+    <form id="formContato" method="POST">
+      
 
-    <div class="produto">
-        <img src="img/Elden_ring.jpg">
-        <div class="conteudo">
-            <div class="nome">Elden Ring</div>
-            <div class="preco">R$ 249,99</div>
-            <button onclick="comprar('Elden Ring')">Comprar</button>
-        </div>
-    </div>
-</div>
-<script>
-  function comprar(jogo) {
-    alert(`Você comprou o jogo: ${jogo}`);
-  }
-</script>
+      <label for="nome">Nome completo</label>
+      <input type="text" id="nome" name="nome" required>
 
-  <!-- FOOTER -->
+      <label for="email">E-mail</label>
+      <input type="email" id="email" name="email" required>
 
+      <label for="assunto">Assunto</label>
+      <input type="text" id="assunto" name="assunto" required>
+
+      <label for="mensagem">Mensagem</label>
+      <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
+
+      <button type="submit">Enviar</button>
+    </form>
+
+    <div id="mensagemEnviada" class="oculto">Mensagem enviada com sucesso!</div>
+  </div>
+  <script>
+    const form = document.getElementById('formContato');
+    const mensagem = document.getElementById('mensagemEnviada');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const dados = new FormData(form);
+
+      fetch('https://formsubmit.co/seuemail@exemplo.com', {
+        method: 'POST',
+        body: dados
+      })
+      .then(response => {
+        if (response.ok) {
+          form.reset();
+          mensagem.style.display = 'block';
+        } else {
+          alert('Erro ao enviar. Tente novamente mais tarde.');
+        }
+      });
+    });
+  </script>
   <footer>
     <div id="footer_content">
       <div id="footer_contacts">
-        <img src="img/chuva_branca2.png">
+        <img src="./img/chuva_branca2.png">
         <p>Contatos</p>
         <div id="footer_social_media">
           <a href="https://github.com/ZionFr/Chuuva" class="footer-link" id="github">
@@ -159,9 +143,5 @@
     </div>
   </footer>
 
-
-
-
 </body>
-
 </html>

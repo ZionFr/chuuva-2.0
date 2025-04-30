@@ -40,6 +40,9 @@ nav{
     letter-spacing: 3px;
     margin-left: 32px;
 }
+.nav-list li:not(.dropdown) {
+    margin-left: 32px;
+}
 .logo-container {
     display: flex;
     align-items: center;
@@ -52,6 +55,39 @@ nav{
 }
 nav.logo{
     font-weight: 700; 
+}
+/* navbar dropdown*/
+
+.dropdown {
+    position: relative;
+    margin-left: 0;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #0b193f;
+    padding: 10px;
+    border-radius: 8px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+    z-index: 1000;
+}
+
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 10px;
+    color: white;
+    text-decoration: none;
 }
 
 /* footer */
